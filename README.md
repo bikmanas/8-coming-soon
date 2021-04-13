@@ -12,7 +12,7 @@ Design: [Coming soon](https://cdn.discordapp.com/attachments/648536139677958156/
 ## Project features
 - HTML
 - CSS 
-
+- JS
 ## Authors
 
 [Povilas](https://github.com/bikmanas)

@@ -17,7 +17,11 @@ function progressBar(selector, data){
                     </div>
                 </div>`;
     }
-    return DOM.innerHTML = HTML;
+    DOM.innerHTML = HTML;
+
+    DOM.addEventListener('onscroll', () => {
+        
+    });
 }
 
 export { progressBar };

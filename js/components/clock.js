@@ -1,11 +1,31 @@
 function calcTimeTillDate(date){
-    const targetDate = '2022-' + date;
-    return {
-        days: 45,
-        hours: 7, 
-        minutes: 35, 
-        seconds: 9
-    }
+    const clock = new Date();
+    let year = clock.getFullYear();
+
+    let yearTarget = `${year}-${date}`;
+    let yearDateObj = new Date(yearTarget);
+    let currMiliseconds = yearDateObj.getTime();
+    let nowInMiliseconds = Date.now();
+
+    if(currMiliseconds < nowInMiliseconds){
+        year++;
+        yearTarget = `${year}-${date}`;
+        yearDateObj = new Date(yearTarget);
+        currMiliseconds = yearDateObj.getTime();
+    } 
+    
+    const timeLeftInMiliseconds = currMiliseconds - nowInMiliseconds;
+    const timeLeftInSeconds = Math.round(timeLeftInMiliseconds / 1000);
+
+    const seconds = timeLeftInSeconds % 60;
+    const minutes = (timeLeftInSeconds - seconds) / 60 % 60;
+    const hours = (timeLeftInSeconds - seconds - minutes * 60) / 3600 % 24;
+    const days = (timeLeftInSeconds - seconds - minutes * 60 - hours * 3600) / 86400;
+    
+    
+
+
+    return { days, hours, minutes, seconds } 
 }
 
 function formatNumber(number){

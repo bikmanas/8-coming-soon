@@ -33,11 +33,13 @@
     display: inline-block;
     width: 0;
     height: 100%;
-    background-color: var(--color-main);
+    background-color: var(--color-main);    
+}
+
+.progress-bar.animate .progress > .bar{
     animation: loading 2s forwards;
     border-radius: 4px;
 }
-
 @keyframes loading{
     0% {
         width: 0;

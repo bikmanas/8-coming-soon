@@ -19,9 +19,21 @@ function progressBar(selector, data){
     }
     DOM.innerHTML = HTML;
 
-    DOM.addEventListener('onscroll', () => {
-        
-    });
+    const progressBarsDOM = DOM.querySelectorAll('.progress-bar');
+
+    for (const progressBarDOM of progressBarsDOM) {
+        addEventListener('scroll', () => {
+            const elementTop = progressBarDOM.offsetTop;
+            const elementHeight = progressBarDOM.clientHeight;
+
+            const isVisible = scrollY + innerHeight >= elementTop + elementHeight;
+
+            if (isVisible) {
+                progressBarDOM.classList.add('animate');
+            }
+        })
+    }
+
 }
 
 export { progressBar };

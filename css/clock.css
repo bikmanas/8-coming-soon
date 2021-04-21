@@ -1,7 +1,7 @@
 .clock{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 35px;
 }
 
 .clock > .time {

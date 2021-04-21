@@ -32,6 +32,17 @@ function formatNumber(number){
     return number < 10 ? '0' + number : number;
 }
 
+function updateTime(valuesDOM, timeValues){
+    const config = ['days', 'hours', 'minutes', 'seconds'];
+
+    for(let i = 0; i < valuesDOM.length; i++){
+        const valueDOM = valuesDOM[i];
+        const key = config[i];
+        const value =  key === 'days' ? timeValues[key] : formatNumber(timeValues[key]);
+        valueDOM.innerText = value;
+    }
+}
+
 function clock (selector, date){
     const DOM = document.querySelector(selector);
     const timeLeft = calcTimeTillDate(date);
@@ -53,6 +64,11 @@ function clock (selector, date){
                 </div>`;
     }
     DOM.innerHTML = HTML;
+    const allTimeValueDOM = DOM.querySelectorAll('.value');
+    
+    setInterval(() => {
+        updateTime(allTimeValueDOM, calcTimeTillDate(date));
+    }, 1000);
 }
 
 export { clock }
